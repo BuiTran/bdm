@@ -1,5 +1,5 @@
 package identity;
-
+//Add comments
 public class Word {
 	private String text;
 	
