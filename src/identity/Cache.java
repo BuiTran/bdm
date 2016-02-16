@@ -1,6 +1,7 @@
 package identity;
 
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
@@ -43,10 +44,10 @@ public class Cache {
 	 * @author Bryce DeVaughn
 	 *
 	 */
-	public Set<Word> findWords(Set<Word> newWords){
+	public Set<Word> findWords(ArrayList<Word> words){
 		Set<Word> rtnList = new TreeSet<>(new WordComparator());
 		
-		for(Word w: newWords){
+		for(Word w: words){
 			if(this.containsWord(w.getText())){
 				rtnList.add(w);
 			}

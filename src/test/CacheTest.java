@@ -1,17 +1,31 @@
 package test;
 
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
+
 import main.MainFrame;
 
 import org.junit.Assert;
 import org.junit.Test;
+
 import identity.*;
 public class CacheTest {
 	
 	@Test
 	public void testFindWords(){
-		Word[] words = {new Word("high"),new Word("trust"),new Word("---blast"),new Word("blast")};
+		ArrayList<Word> words = new ArrayList<Word>();
+		words.add(new Word("high"));
+		words.add(new Word("trust"));
+		words.add(new Word("---blast"));
+		words.add(new Word("blast"));
 		Cache c = new Cache();
 		
+		Set<Word> newWords = c.findWords(words);
+		
+		assertFalse(newWords.contains("---blast"));
 	}
 
 	@Test
