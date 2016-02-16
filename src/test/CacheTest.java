@@ -6,6 +6,13 @@ import org.junit.Assert;
 import org.junit.Test;
 import identity.*;
 public class CacheTest {
+	
+	@Test
+	public void testFindWords(){
+		Word[] words = {new Word("high"),new Word("trust"),new Word("---blast"),new Word("blast")};
+		Cache c = new Cache();
+		
+	}
 
 	@Test
 	public void testInsert() {
