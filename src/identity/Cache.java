@@ -37,6 +37,24 @@ public class Cache {
 		return this.myCollection.contains(w);
 	}
 	
+	/**
+	 * This method will take in a list of Word objects and return a new list of the ones
+	 * that are contained in the dictionary
+	 * @author Bryce DeVaughn
+	 *
+	 */
+	public Set<Word> findWords(Set<Word> newWords){
+		Set<Word> rtnList = new TreeSet<>(new WordComparator());
+		
+		for(Word w: newWords){
+			if(this.containsWord(w.getText())){
+				rtnList.add(w);
+			}
+		}
+		
+		return rtnList;
+	}
+	
 	private class WordComparator implements Comparator<Word> {
 			@Override
 			public int compare(Word word1, Word word2) {

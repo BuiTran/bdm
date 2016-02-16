@@ -9,15 +9,16 @@ import java.io.IOException;
 
 public class Reader {
 	private Cache myCache;
+	private final String CACHE_FILE_NAME = "dict\\cache.txt";
 	
 	
 	private void initCache(){
 		//For macs
-		File fileDirectory = new File("dict/");
-		File cacheFile = new File("dict/cache.txt");
+//		File fileDirectory = new File("dict/");
+//		File cacheFile = new File("dict/cache.txt");
 		//For windows
-//		File fileDirectory = new File("dict\\");
-//		File cacheFile = new File("dict\\cache.txt");
+		File fileDirectory = new File("dict\\");
+		File cacheFile = new File(CACHE_FILE_NAME);
 		boolean renewCache = false;
 		if (!cacheFile.exists()){
 			renewCache = true;
@@ -77,7 +78,7 @@ public class Reader {
 			System.out.println("Finished reading all text files");
 
 			//Create a new cache file.
-			File newCache = new File("dict\\cache.txt");
+			File newCache = new File(CACHE_FILE_NAME);
 			try {
 				newCache.createNewFile();
 				FileWriter writer = new FileWriter(newCache); 
