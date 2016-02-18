@@ -25,19 +25,19 @@ public class WordFinder {
 	
 	
 	public ArrayList<Word> findWord(int m,int r,int c, ArrayList<Integer> usedSet){
-		//Terminate condition for m < 0
+		//Terminate condition for m < 0. Return empty list
 		if (m<=0){
-			return null;
+			return new ArrayList<Word>();
 		}
-		//For invalid position
+		//For invalid position. Return empty list
 		if (r<0 || c <0 || r>=m || c>=0){
-			return null;
+			return new ArrayList<Word>();
 		}
-		//For visited position
+		//For visited position. Return empty list
 		int position = r * m + c;
 		Integer pos = Integer.valueOf(position);
 		if (usedSet.contains(pos)){
-			return null;
+			return new ArrayList<Word>();
 		}
 		
 		//Accepted state when m = 1. Return the list containing the current letter.
@@ -62,11 +62,14 @@ public class WordFinder {
 				}
 				ArrayList<Word> subWords = findWord(m-1, nr, nc, copyUsedSet);
 				for (Word w: subWords){
-					
+					//Create the new word with letter, making the m-letter word.
+					Word concatWord = new Word(wordPuzzle[r][c].getText().concat(w.getText()));
+					result.add(concatWord);
 				}
 				
 			}
 		}
+		return result;
 		
 	}
 }
