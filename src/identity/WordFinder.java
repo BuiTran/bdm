@@ -27,17 +27,17 @@ public class WordFinder {
 	public ArrayList<Word> findWord(int m,int r,int c, ArrayList<Integer> usedSet){
 		//Terminate condition for m < 0. Return empty list
 		if (m<=0){
-			return new ArrayList<Word>();
+			return null;
 		}
 		//For invalid position. Return empty list
-		if (r<0 || c <0 || r>=m || c>=0){
-			return new ArrayList<Word>();
+		if (r<0 || c <0 || r>=n || c>=n){
+			return null;
 		}
 		//For visited position. Return empty list
-		int position = r * m + c;
+		int position = r * n + c;
 		Integer pos = Integer.valueOf(position);
 		if (usedSet.contains(pos)){
-			return new ArrayList<Word>();
+			return null;
 		}
 		
 		//Accepted state when m = 1. Return the list containing the current letter.
@@ -54,22 +54,37 @@ public class WordFinder {
 			for (int j = 0; j <3;j++){
 				int nr = r + positionArray[i][j][0];
 				int nc = c + positionArray[i][j][1];
-				int npos = nr * m + nc;
+				int npos = nr * n + nc;
 				//Make a copy of the usedSet
 				ArrayList<Integer> copyUsedSet= new ArrayList<Integer>();
 				for (Integer k: usedSet){
 					copyUsedSet.add(k);
 				}
 				ArrayList<Word> subWords = findWord(m-1, nr, nc, copyUsedSet);
-				for (Word w: subWords){
-					//Create the new word with letter, making the m-letter word.
-					Word concatWord = new Word(wordPuzzle[r][c].getText().concat(w.getText()));
-					result.add(concatWord);
+				if (subWords != null){
+					for (Word w: subWords){
+						//Create the new word with letter, making the m-letter word.
+						Word concatWord = new Word(wordPuzzle[r][c].getText().concat(w.getText()));
+						result.add(concatWord);
+					}
 				}
 				
 			}
 		}
 		return result;
-		
 	}
+	public ArrayList<Word> getAllWords(){
+		ArrayList<Word> total = new ArrayList<Word>();
+		for (int i = 0; i < n; i++){
+			for (int j = 0; j < n; j++){
+				ArrayList<Word> subset = findWord(m, i, j, new ArrayList<Integer>());
+				for (Word w: subset){
+					total.add(w);
+				}
+				
+			}
+		}
+		return total;
+	}
+	
 }
