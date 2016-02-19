@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 public class GridSquare {
@@ -8,6 +9,7 @@ public class GridSquare {
 	private String displayLetter;
 	private boolean isClicked;
 	private final Color clickedColor = new Color(245,186,197);
+	private final int FONTSIZE = 60;
 	
 	public GridSquare(int x, int y, int sideLength, String displayLetter){
 		this.x = x;
@@ -35,7 +37,9 @@ public class GridSquare {
 		
 		//Draws out the character of the square
 		g.setColor(Color.darkGray);
-		g.drawString(displayLetter, x+sideLength/2, y+sideLength/2);
+		g.setFont(new Font("Consolas",Font.BOLD,FONTSIZE));
+		g.drawString(displayLetter, x+(sideLength/2-(FONTSIZE/2)), y+(sideLength/2+(FONTSIZE/3)));
+//		g.drawString(displayLetter, x+(sideLength/2), y+(sideLength/2));
 
 	}
 	

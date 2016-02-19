@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -18,14 +19,19 @@ import javax.swing.JPanel;
 public class GridPanel extends JPanel implements MouseListener{
 	private GridSquare[][] displayGrid;//Contains the GirdSquares that the user will be able to click on
 	private String[][] gridVals;//Contains the display characters that are in each grid square
-	private final int GRIDSQSIDELENGTH = 30,N = 3; 
+	private final int WIDTH = 500;
+	private final int N = 3;
+	private final int GRIDSQSIDELENGTH = WIDTH/N;
 	
 	
 	public GridPanel(){
 		displayGrid = new GridSquare[N][N];
 		gridVals = new String[N][N];
+		this.fillLists();
 		this.setFocusable(true);
 		this.setBackground(Color.black);
+		this.setSize(new Dimension(WIDTH,WIDTH));
+		this.addMouseListener(this);
 	}
 	
 	/**
@@ -85,7 +91,7 @@ public class GridPanel extends JPanel implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		
+		this.checkClickLoc(arg0);
 	}
 
 	@Override
