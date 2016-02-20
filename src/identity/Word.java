@@ -3,8 +3,9 @@ package identity;
 public class Word {
 	private String text;
 	
-	public Word(){
-		
+	//copy constructor. for later use (maybe)
+	public Word(Word another){
+		this.text = another.text;
 	}
 	
 	public Word(String text){
