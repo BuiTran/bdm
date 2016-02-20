@@ -14,6 +14,7 @@ import main.Controller;
 public class NewMainFrame extends JFrame{
 	
 	public static final String CONFIG_BTN = "Config Grid", USE_GRID_BTN = "Save Grid";
+	private GridPanel gPanel;
 	
 	public NewMainFrame(Controller c){
 		this.setTitle("Word Finder");
@@ -21,6 +22,8 @@ public class NewMainFrame extends JFrame{
 		this.setVisible(true);
 		this.setFocusable(true);
 		this.setPreferredSize(new Dimension(600,600));
+		this.setMinimumSize(new Dimension(600,600));
+		this.setMaximumSize(new Dimension(600,600));
 		
 		
 		JPanel mainPanel = new JPanel();//Setting up the mainPanel that will contain all of the panels
@@ -30,7 +33,7 @@ public class NewMainFrame extends JFrame{
 		JPanel centerPnl = new JPanel();//This panel will contain the grid and have a config panel to change the grid
 		centerPnl.setLayout(new BorderLayout());
 		
-		GridPanel gPanel = new GridPanel();
+		gPanel = new GridPanel();
 		centerPnl.add(gPanel, BorderLayout.CENTER);
 		
 		JPanel centerNorthPnl = new JPanel();//This panel will hold the button that will be used to configure the grid of squares
@@ -58,5 +61,9 @@ public class NewMainFrame extends JFrame{
 		
 		this.pack();
 		
+	}
+	
+	public String[][] getGridVals(){
+		return gPanel.getGridVals();
 	}
 }

@@ -38,7 +38,7 @@ public class GridSquare {
 		//Draws out the character of the square
 		g.setColor(Color.darkGray);
 		g.setFont(new Font("Consolas",Font.BOLD,FONTSIZE));
-		g.drawString(displayLetter, x+(sideLength/2-(FONTSIZE/2)), y+(sideLength/2+(FONTSIZE/3)));
+		g.drawString(displayLetter.toUpperCase(), x+(sideLength/2-(FONTSIZE/2)), y+(sideLength/2+(FONTSIZE/3)));
 //		g.drawString(displayLetter, x+(sideLength/2), y+(sideLength/2));
 
 	}
