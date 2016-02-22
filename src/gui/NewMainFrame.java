@@ -27,7 +27,7 @@ import javax.swing.JSlider;
 
 public class NewMainFrame extends JFrame{
 	
-	public static final String CONFIG_BTN = "Config Grid", USE_GRID_BTN = "Save Grid";
+	public static final String USE_GRID_BTN = "Use Grid";
 	private GridPanel gPanel;
 	private JList myList;
 	private JLabel lblN;
@@ -54,12 +54,6 @@ public class NewMainFrame extends JFrame{
 		
 		gPanel = new GridPanel(N);
 		centerPnl.add(gPanel, BorderLayout.CENTER);
-		
-		
-		JPanel centerNorthPnl = new JPanel();//This panel will hold the button that will be used to configure the grid of squares
-		centerNorthPnl.setLayout(new FlowLayout(FlowLayout.CENTER));
-		
-		centerPnl.add(centerNorthPnl,BorderLayout.NORTH);
 		
 		JPanel centerSouthPnl = new JPanel();//This panel will hold some info and allow the grid to be saved and used
 		centerSouthPnl.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -96,8 +90,17 @@ public class NewMainFrame extends JFrame{
 		words = rtnList;
 	}
 	
-	public String[][] getGridVals(){
-		return gPanel.getGridVals();
+	public Word[][] getGridVals(){
+		String[][] tempVals = gPanel.getGridVals();
+		Word[][] rtnList = new Word[tempVals.length][tempVals[0].length];
+		
+		for(int i = 0; i < tempVals.length; i++){
+			for(int j = 0; j < tempVals[i].length;j++){
+				rtnList[i][j] = new Word(tempVals[i][j]);
+			}
+		}
+		
+		return rtnList;
 	}
 	
 	/**

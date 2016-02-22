@@ -27,14 +27,11 @@ public class InitialFrame extends JFrame {
 		return sliderDimension;
 	}
 	private JSlider sliderLimit;
-<<<<<<< HEAD
-	//private GridPanel gp = new GridPanel();
-=======
+
 	public JSlider getSliderLimit() {
 		return sliderLimit;
 	}
-	private GridPanel gp = new GridPanel();
->>>>>>> 8c622deabef8a3b9d1b8d5b3cf2793b41719a6b7
+//	private GridPanel gp = new GridPanel(1);
 	
 	public InitialFrame(Controller c) {
 
@@ -42,13 +39,13 @@ public class InitialFrame extends JFrame {
 		getContentPane().add(panelNorth, BorderLayout.NORTH);
 		panelNorth.add(lblNewLabel);
 		
-		JSlider sliderLetter = new JSlider();
-		panelNorth.add(sliderLetter);
-		sliderLetter.setPaintLabels(true);
-		sliderLetter.setPaintTicks(true);
-		sliderLetter.setMajorTickSpacing(1);
-		sliderLetter.setMaximum(10);
-		sliderLetter.setMinimum(1);
+		sliderLimit = new JSlider();
+		panelNorth.add(sliderLimit);
+		sliderLimit.setPaintLabels(true);
+		sliderLimit.setPaintTicks(true);
+		sliderLimit.setMajorTickSpacing(1);
+		sliderLimit.setMaximum(10);
+		sliderLimit.setMinimum(1);
 		
 		JPanel panelCenter = new JPanel();
 		getContentPane().add(panelCenter, BorderLayout.CENTER);
@@ -56,7 +53,7 @@ public class InitialFrame extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("Dimensions:");
 		panelCenter.add(lblNewLabel_1);
 		
-		JSlider sliderDimension = new JSlider();
+		sliderDimension = new JSlider();
 		panelCenter.add(sliderDimension);
 		sliderDimension.setMajorTickSpacing(1);
 		sliderDimension.setMinimum(1);
@@ -73,42 +70,17 @@ public class InitialFrame extends JFrame {
 	}
 
 
-<<<<<<< HEAD
-//public void onOKButtonClick() { 
-//	System.out.println("OK button click");
+//public void commit(){
+//	try {
+//		int dim = sliderDimension.getValue();
+//		int len = sliderLimit.getValue();
+//		gp.setN(dim);
+//	}
+//	catch (Exception e) {
+//		e.printStackTrace();
+//		JOptionPane.showMessageDialog(this,"Invalid Number","Type a number!",JOptionPane.WARNING_MESSAGE);
 //
-//	
-//	NewMainFrame mf = new NewMainFrame();
-//	
-//	mf.setVisible(true);
-//
-//
-//
+//	}
 //}
-=======
-public void onOKButtonClick() { 
-	System.out.println("OK button click");
-	
-	
-	NewMainFrame mf = new NewMainFrame();
-	
-	mf.setVisible(true);
-
-
-
-}
->>>>>>> 8c622deabef8a3b9d1b8d5b3cf2793b41719a6b7
-public void commit(){
-	try {
-		int dim = sliderDimension.getValue();
-		int len = sliderLimit.getValue();
-		//gp.setN(dim);
-	}
-	catch (Exception e) {
-		e.printStackTrace();
-		JOptionPane.showMessageDialog(this,"Invalid Number","Type a number!",JOptionPane.WARNING_MESSAGE);
-
-	}
-}
 
 }
