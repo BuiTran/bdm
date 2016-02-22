@@ -43,10 +43,8 @@ public class NewMainFrame extends JFrame{
 		this.setPreferredSize(new Dimension(800,600));
 		this.setMinimumSize(new Dimension(600,600));
 		this.setMaximumSize(new Dimension(800,900));
-		this.words();
-	
-		wFinder = new WordFinder();
-		
+		this.words = new ArrayList<String>();
+			
 		JPanel mainPanel = new JPanel();//Setting up the mainPanel that will contain all of the panels
 		this.getContentPane().add(mainPanel);
 		mainPanel.setLayout(new BorderLayout());
@@ -79,7 +77,7 @@ public class NewMainFrame extends JFrame{
 		JScrollPane scrollPane = new JScrollPane();
 		mainPanel.add(scrollPane, BorderLayout.WEST);
 		
-		myList = new JList ((ListModel) wf.getAllWords());
+		myList = new JList ((ListModel) words);
 		scrollPane.setViewportView(myList);
 		
 		scrollPane.getViewport().setView(myList);
