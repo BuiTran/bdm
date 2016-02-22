@@ -25,8 +25,8 @@ public class GridPanel extends JPanel implements MouseListener{
 	private int GRIDSQSIDELENGTH;
 
 	
-	public GridPanel(){
-		N = 3;
+	public GridPanel(int N){
+		this.N = N;
 		displayGrid = new GridSquare[N][N];
 		gridVals = new String[N][N];
 		this.fillLists();

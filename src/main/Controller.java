@@ -1,7 +1,9 @@
 package main;
 
+import gui.InitialFrame;
 import gui.NewMainFrame;
 import identity.Reader;
+import identity.WordFinder;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,10 +14,14 @@ public class Controller implements ActionListener {
 	private Reader reader;
 	private NewMainFrame frame;
 	private String[][] letterGrid;
+	private WordFinder wFinder;
+	private InitialFrame iFrame;
 	
 	public Controller(){
 		reader = new Reader();
-		frame = new NewMainFrame(this);
+		//frame = new NewMainFrame(this);
+		iFrame = new InitialFrame(this);
+		iFrame.setVisible(true);
 		letterGrid = new String[1][1];
 	}
 
@@ -28,6 +34,10 @@ public class Controller implements ActionListener {
 		
 		if(j.getText().equals(NewMainFrame.USE_GRID_BTN)){
 			letterGrid = frame.getGridVals();
+		}
+		
+		if(j.getText().equals(InitialFrame.OK_BTN)){
+			frame = new NewMainFrame(this);
 		}
 	}
 	

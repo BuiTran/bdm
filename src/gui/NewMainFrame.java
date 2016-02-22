@@ -32,11 +32,10 @@ public class NewMainFrame extends JFrame{
 	private JList myList;
 	private JLabel lblN;
 	
-	private GridPanel gp = new GridPanel();
 	private JSlider slider;
 	public ArrayList<String> words;
 	
-	public NewMainFrame(Controller c){
+	public NewMainFrame(Controller c, int N){
 		this.setTitle("Word Finder");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -53,7 +52,7 @@ public class NewMainFrame extends JFrame{
 		JPanel centerPnl = new JPanel();//This panel will contain the grid and have a config panel to change the grid
 		centerPnl.setLayout(new BorderLayout());
 		
-		gPanel = new GridPanel();
+		gPanel = new GridPanel(N);
 		centerPnl.add(gPanel, BorderLayout.CENTER);
 		
 		
@@ -78,7 +77,7 @@ public class NewMainFrame extends JFrame{
 		JScrollPane scrollPane = new JScrollPane();
 		mainPanel.add(scrollPane, BorderLayout.WEST);
 		
-		myList = new JList ((ListModel) words);
+		myList = new JList (words.toArray());
 		scrollPane.setViewportView(myList);
 		
 		scrollPane.getViewport().setView(myList);
@@ -100,4 +99,8 @@ public class NewMainFrame extends JFrame{
 	public String[][] getGridVals(){
 		return gPanel.getGridVals();
 	}
+	
+	/**
+	 * 
+	 */
 }
