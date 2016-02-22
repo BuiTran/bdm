@@ -17,23 +17,28 @@ import javax.swing.JPanel;
  *
  */
 public class GridPanel extends JPanel implements MouseListener{
-	private GridSquare[][] displayGrid;//Contains the GirdSquares that the user will be able to click on
+	private GridSquare[][] displayGrid;//Contains the GridSquares that the user will be able to click on
 	private String[][] gridVals;//Contains the display characters that are in each grid square
 	private final int WIDTH = 500;
-	private final int N = 3;
-	private final int GRIDSQSIDELENGTH = WIDTH/N;
-	
+	private int N;
+
+	private int GRIDSQSIDELENGTH;
+
 	
 	public GridPanel(){
+		N = 3;
 		displayGrid = new GridSquare[N][N];
 		gridVals = new String[N][N];
 		this.fillLists();
 		this.setFocusable(true);
 		this.setBackground(Color.black);
-		this.setSize(new Dimension(WIDTH,WIDTH));
+		this.setSize(new Dimension(492, 492));
+		this.GRIDSQSIDELENGTH= WIDTH/N;
 		this.addMouseListener(this);
+		
 	}
 	
+
 	/**
 	 * This will fill the lists gridVals and displayGrid
 	 */
@@ -116,6 +121,13 @@ public class GridPanel extends JPanel implements MouseListener{
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+	public int getN() {
+		return N;
+	}
+
+	public void setN(int n) {
+		N = n;
 	}
 	
 	
