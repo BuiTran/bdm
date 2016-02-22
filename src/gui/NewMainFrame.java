@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -14,8 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.Controller;
+
 import javax.swing.JScrollPane;
 
+import identity.Word;
 import identity.WordFinder;
 
 import javax.swing.JList;
@@ -86,7 +87,15 @@ public class NewMainFrame extends JFrame{
 		
 	}
 	
-
+	public void setWords(ArrayList<Word> newWords){
+		ArrayList<String> rtnList = new ArrayList<String>();
+		
+		for(Word w: newWords){
+			rtnList.add(w.getText());
+		}
+		
+		words = rtnList;
+	}
 	
 	public String[][] getGridVals(){
 		return gPanel.getGridVals();
