@@ -78,7 +78,7 @@ public class NewMainFrame extends JFrame{
 		JScrollPane scrollPane = new JScrollPane();
 		mainPanel.add(scrollPane, BorderLayout.WEST);
 		
-		myList = new JList ((ListModel) words);
+		myList = new JList (words.toArray());
 		scrollPane.setViewportView(myList);
 		
 		scrollPane.getViewport().setView(myList);

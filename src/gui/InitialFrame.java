@@ -17,7 +17,13 @@ import main.Controller;
 public class InitialFrame extends JFrame {
 	private final JLabel lblNewLabel = new JLabel("Letter limit:");
 	private JSlider sliderDimension;
+	public JSlider getSliderDimension() {
+		return sliderDimension;
+	}
 	private JSlider sliderLimit;
+	public JSlider getSliderLimit() {
+		return sliderLimit;
+	}
 	private GridPanel gp = new GridPanel();
 	
 	public InitialFrame() {
@@ -64,7 +70,7 @@ public class InitialFrame extends JFrame {
 
 public void onOKButtonClick() { 
 	System.out.println("OK button click");
-
+	
 	
 	NewMainFrame mf = new NewMainFrame();
 	
