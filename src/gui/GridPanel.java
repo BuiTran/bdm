@@ -17,29 +17,36 @@ import javax.swing.JPanel;
  *
  */
 public class GridPanel extends JPanel implements MouseListener{
-	private GridSquare[][] displayGrid;//Contains the GirdSquares that the user will be able to click on
+
+	private GridSquare[][] displayGrid;//Contains the GridSquares that the user will be able to click on
 	private String[][] gridVals;//Contains the display characters that are in each grid square
-	private final int WIDTH = 500;
-	private final int N = 3;
-	private final int GRIDSQSIDELENGTH = WIDTH/N;
+	private final int WIDTH = 492;
+	private int N;
+
+	private int GRIDSQSIDELENGTH;
+
 	
-	
-	public GridPanel(){
+	public GridPanel(int N){
+		this.N = N;
+		System.out.println("GRID N: "+N);
 		displayGrid = new GridSquare[N][N];
 		gridVals = new String[N][N];
+		this.GRIDSQSIDELENGTH= WIDTH/N;
 		this.fillLists();
 		this.setFocusable(true);
 		this.setBackground(Color.black);
-		this.setSize(new Dimension(WIDTH,WIDTH));
+		this.setSize(new Dimension(WIDTH, WIDTH));
 		this.addMouseListener(this);
+		
 	}
 	
+
 	/**
 	 * This will fill the lists gridVals and displayGrid
 	 */
 	public void fillLists(){
-		for(int i = 0; i < displayGrid.length; i++){
-			for(int j = 0; j < displayGrid[i].length; j++){
+		for(int i = 0; i < N; i++){
+			for(int j = 0; j < N; j++){
 				GridSquare sq = new GridSquare(j * GRIDSQSIDELENGTH, i * GRIDSQSIDELENGTH, GRIDSQSIDELENGTH, "");
 				displayGrid[i][j] = sq;
 				gridVals[i][j] = sq.getDisplayLetter();
@@ -48,6 +55,7 @@ public class GridPanel extends JPanel implements MouseListener{
 	}
 	
 	public void paintComponent(Graphics g){
+
 		for(int i = 0; i < displayGrid.length; i++){
 			for(int j = 0; j < displayGrid[i].length; j++){
 				displayGrid[i][j].drawOn(g);
@@ -116,6 +124,14 @@ public class GridPanel extends JPanel implements MouseListener{
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public int getN() {
+		return N;
+	}
+
+	public void setN(int n) {
+		N = n;
 	}
 	
 	

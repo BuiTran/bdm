@@ -17554,7 +17554,11 @@ barefacedness
 barefacednesses
 barefit
 barefoot
+<<<<<<< HEAD
 barefooted
+=======
+barefooted
+>>>>>>> gui
 barege
 bareges
 baregine
