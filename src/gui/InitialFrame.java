@@ -23,8 +23,18 @@ public class InitialFrame extends JFrame {
 	public static final String OK_BTN = "OK";
 	private final JLabel lblNewLabel = new JLabel("Letter limit:");
 	private JSlider sliderDimension;
+	public JSlider getSliderDimension() {
+		return sliderDimension;
+	}
 	private JSlider sliderLimit;
+<<<<<<< HEAD
 	//private GridPanel gp = new GridPanel();
+=======
+	public JSlider getSliderLimit() {
+		return sliderLimit;
+	}
+	private GridPanel gp = new GridPanel();
+>>>>>>> 8c622deabef8a3b9d1b8d5b3cf2793b41719a6b7
 	
 	public InitialFrame(Controller c) {
 
@@ -63,6 +73,7 @@ public class InitialFrame extends JFrame {
 	}
 
 
+<<<<<<< HEAD
 //public void onOKButtonClick() { 
 //	System.out.println("OK button click");
 //
@@ -74,6 +85,19 @@ public class InitialFrame extends JFrame {
 //
 //
 //}
+=======
+public void onOKButtonClick() { 
+	System.out.println("OK button click");
+	
+	
+	NewMainFrame mf = new NewMainFrame();
+	
+	mf.setVisible(true);
+
+
+
+}
+>>>>>>> 8c622deabef8a3b9d1b8d5b3cf2793b41719a6b7
 public void commit(){
 	try {
 		int dim = sliderDimension.getValue();
