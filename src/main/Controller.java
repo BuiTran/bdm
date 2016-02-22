@@ -3,8 +3,6 @@ package main;
 import gui.NewMainFrame;
 import identity.Reader;
 import gui.InitialFrame;
-import gui.NewMainFrame;
-import identity.Reader;
 import identity.Word;
 import identity.WordFinder;
 
