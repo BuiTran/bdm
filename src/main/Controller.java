@@ -3,11 +3,14 @@ package main;
 import gui.NewMainFrame;
 import identity.Reader;
 import gui.InitialFrame;
+import identity.Cache;
 import identity.Word;
 import identity.WordFinder;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Set;
 
 import javax.swing.JButton;
 
@@ -37,11 +40,12 @@ public class Controller implements ActionListener {
 		if(j.getText().equals(NewMainFrame.USE_GRID_BTN)){
 			letterGrid = frame.getGridVals();
 			wFinder = new WordFinder(wordLength,n,letterGrid);
-			frame.setWords(wFinder.getAllWords());
-			for(Word w: wFinder.getAllWords()){
-				System.out.println(w.getText());
-			}
+			Set<Word> list = reader.getMyCache().findWords(wFinder.getAllWords());
+			ArrayList<Word> words = new ArrayList<Word>();
+			words.addAll(list);
+			frame.setWords(words);
 			frame.repaint();
+			frame.update();
 		}
 		
 		if(j.getText().equals(InitialFrame.OK_BTN)){

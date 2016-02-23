@@ -17,6 +17,7 @@ import javax.swing.JScrollPane;
 import identity.Word;
 import identity.WordFinder;
 
+import javax.swing.AbstractListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -27,7 +28,8 @@ public class NewMainFrame extends JFrame{
 	
 	public static final String USE_GRID_BTN = "Use Grid";
 	private GridPanel gPanel;
-	private JList myList;
+	private JList<String> myList;
+	private WordListModel wList;
 	public ArrayList<String> words;
 	
 	public NewMainFrame(Controller c, int N){
@@ -39,6 +41,7 @@ public class NewMainFrame extends JFrame{
 		this.setMinimumSize(new Dimension(600,600));
 		this.setMaximumSize(new Dimension(800,900));
 		this.words = new ArrayList<String>();
+		this.wList = new WordListModel();
 
 		JPanel mainPanel = new JPanel();//Setting up the mainPanel that will contain all of the panels
 		this.getContentPane().add(mainPanel);
@@ -57,6 +60,7 @@ public class NewMainFrame extends JFrame{
 		centerSouthPnl.add(infoLbl);
 		
 		JButton useGridBtn = new JButton(USE_GRID_BTN);
+		useGridBtn.addActionListener(c);
 		centerSouthPnl.add(useGridBtn);
 		
 		centerPnl.add(centerSouthPnl, BorderLayout.SOUTH);
@@ -66,7 +70,7 @@ public class NewMainFrame extends JFrame{
 		JScrollPane scrollPane = new JScrollPane();
 		mainPanel.add(scrollPane, BorderLayout.WEST);
 		
-		myList = new JList (words.toArray());
+		myList = new JList <String>(wList);
 		scrollPane.setViewportView(myList);
 		
 		scrollPane.getViewport().setView(myList);
@@ -97,5 +101,31 @@ public class NewMainFrame extends JFrame{
 		
 		return rtnList;
 	}
+	
+	public void update(){
+		wList.anounceChange();
+	}
+	
+	/**
+	 * This will be used to display the words in the JList
+	 */
+	private class WordListModel extends AbstractListModel {
 
+		@Override
+		public Object getElementAt(int arg0) {
+			// TODO Auto-generated method stub
+			return words.get(arg0);
+		}
+
+		@Override
+		public int getSize() {
+			// TODO Auto-generated method stub
+			return words.size();
+		}
+		
+		public void anounceChange(){
+			this.fireContentsChanged(this, 0, words.size());
+		}
+		
+	}
 }
