@@ -49,8 +49,12 @@ public class Controller implements ActionListener {
 		}
 		
 		if(j.getText().equals(InitialFrame.OK_BTN)){
-			n = iFrame.getSliderDimension().getValue(); 
-			wordLength = iFrame.getSliderLimit().getValue();
+
+			String nStr = iFrame.getTextN().getText();
+			String wordLengthStr = iFrame.getTextLimit().getText();
+			n = Integer.parseInt(nStr);
+			wordLength = Integer.parseInt(wordLengthStr);
+					
 			System.out.println("N: "+n+"    WordLength: "+wordLength);
 			frame = new NewMainFrame(this, n);
 			iFrame.setVisible(false);
