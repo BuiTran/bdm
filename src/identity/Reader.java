@@ -14,11 +14,11 @@ public class Reader {
 	
 	private void initCache(){
 		//For macs
-//		File fileDirectory = new File("dict/");
-//		File cacheFile = new File("dict/cache.txt");
+		File fileDirectory = new File("dict/");
+		File cacheFile = new File("dict/cache.txt");
 		//For windows
-		File fileDirectory = new File("dict\\");
-		File cacheFile = new File(CACHE_FILE_NAME);
+//		File fileDirectory = new File("dict\\");
+//		File cacheFile = new File(CACHE_FILE_NAME);
 		boolean renewCache = false;
 		if (!cacheFile.exists()){
 			renewCache = true;
