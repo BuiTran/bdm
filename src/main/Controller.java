@@ -27,7 +27,6 @@ public class Controller implements ActionListener {
 		this.n = 0;
 		this.wordLength = 0;
 		this.reader = new Reader();
-		//frame = new NewMainFrame(this);
 		this.iFrame = new InitialFrame(this);
 		this.iFrame.setVisible(true);
 		this.letterGrid = new Word[1][1];
